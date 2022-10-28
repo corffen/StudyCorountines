@@ -6,3 +6,7 @@
 *.iml
 out
 gen
+.gradle
+build
+gradlew
+gradlew.bat
