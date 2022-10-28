@@ -96,14 +96,26 @@ import kotlin.concurrent.thread
 //    }
 //}
 
+//</editor-fold>
 //<editor-fold desc="10万个线程">
+//fun main() = runBlocking {
+//    repeat(100_000) { // 启动大量的协程
+//        thread {
+//            sleep(5000L)
+//            print(".")
+//        }
+//    }
+//}
+//</editor-fold>
+
+//<editor-fold desc="全局协程就像守护线程">
 fun main() = runBlocking {
-    repeat(100_000) { // 启动大量的协程
-        thread {
-            sleep(5000L)
-            print(".")
+    GlobalScope.launch {
+        repeat(1000) { i ->
+            println("I'm sleeping $i ...")
+            delay(500L)
         }
     }
+    delay(1300L) // 在延迟后退出
 }
-//</editor-fold>
 //</editor-fold>
